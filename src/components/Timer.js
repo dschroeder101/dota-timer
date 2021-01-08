@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Jumbotron, Form, Button, Row, Col } from "react-bootstrap";
-// import { useSpeechSynthesis } from 'react-speech-kit';
 
 class Timer extends Component {
   
@@ -10,8 +9,6 @@ class Timer extends Component {
     this.handlePause = this.handlePause.bind(this);
     this.handleReset = this.handleReset.bind(this);
     
-    this.speaker = new SpeechSynthesisUtterance();
-
     this.startingPhrases = [
       "May the all anus be with you",
       "Godspeed, the all anus smiles upon you this day",
@@ -69,8 +66,6 @@ class Timer extends Component {
       "Siege creep wave just spawned"
     ]
 
-    this.voices = speechSynthesis.getVoices();
-
     this.state = {
       text: "00:00",
       running: false,
@@ -127,7 +122,7 @@ class Timer extends Component {
     let result = [];
 
     // Bounties and creep waves available every 5 minutes
-    if (this.state.minutes % 5 === 0 && this.state.seconds === 0) {
+    if (this.state.minutes > 0 && this.state.minutes % 5 === 0 && this.state.seconds === 0) {
       result.push(this.bountyAvailablePhrases[this.getRandomNumber(this.bountyAvailablePhrases.length)]);
       result.push(this.siegeCreepSpawnedPhrases[this.getRandomNumber(this.siegeCreepSpawnedPhrases.length)]);
     }
@@ -188,8 +183,7 @@ class Timer extends Component {
   alert = (phrases) => {
       phrases.forEach(phrase => {
         let speaker = new SpeechSynthesisUtterance(phrase);
-        speaker.voice = this.voices.filter(function(voice) { return voice.name === "Google UK English Male";})[0];
-        console.log(speaker.voice)
+        speaker.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name === "Google UK English Male";})[0];
         speechSynthesis.speak(speaker);
       });
   }
