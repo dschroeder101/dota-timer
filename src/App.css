@@ -1,7 +1,3 @@
-body {
-    background-color: #282c34;
-}
-
 .timerText {
     font-size: 120px;
 }
@@ -26,36 +22,3 @@ body {
     margin-top: 20px;
     text-align: center;
 }
-
-.App {
-    text-align: center;
-    background-color: #282c34;
-    color: white;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  .App-header {
-    min-height: 20vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    width: 70%;
-    margin: auto;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  .App-content {
-    background-color: #282c34;
-    color: white;
-    min-height: 60vh;
-  }

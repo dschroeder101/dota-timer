@@ -15,8 +15,16 @@ class Timer extends Component {
     this.startingPhrases = [
       "May the all anus be with you",
       "Godspeed, the all anus smiles upon you this day",
-      "Do not get cocky, kid",
-      "Nic, don't forget to hit the nexus"
+      "Do not get peenisy, kid",
+      "Give them a good rogering",
+      "Your team comp is horrible, you'll probably lose",
+      "I hope you're not tilted after that last game",
+      "I long for death, but death will not come",
+      "Try to hit 100 creep score this game, you casual",
+      "Nic, don't forget to hit the nexus",
+      "Let me guess, Quin is playing Windranger",
+      "Uh oh, Christian is playing a broken hero",
+      "Alex in ten minutes: Oh no, they're killing me, oh no, I'm dead"
     ]
 
     this.bountiesIn30SecondsPhrases = [
@@ -26,6 +34,7 @@ class Timer extends Component {
     this.bountyAvailablePhrases = [
       "Get the bounty you filthy casual",
       "Bounties spawned, get on it",
+      "Get the bounty you try hard",
     ]
 
     this.runesIn30SecondsPhrases = [
@@ -60,6 +69,8 @@ class Timer extends Component {
       "Siege creep wave just spawned"
     ]
 
+    this.voices = speechSynthesis.getVoices();
+
     this.state = {
       text: "00:00",
       running: false,
@@ -75,6 +86,8 @@ class Timer extends Component {
       this.setState({ running: true });
       this.watch = setInterval(() => this.step(), 1000);
     }
+
+    this.alert([this.startingPhrases[this.getRandomNumber(this.startingPhrases.length)]]);
   };
 
   handlePause = () => {
@@ -173,10 +186,11 @@ class Timer extends Component {
   };
 
   alert = (phrases) => {
-      this.speaker.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name === "Google UK English Male";})[0];
-
       phrases.forEach(phrase => {
-        speechSynthesis.speak(new SpeechSynthesisUtterance(phrase));
+        let speaker = new SpeechSynthesisUtterance(phrase);
+        speaker.voice = this.voices.filter(function(voice) { return voice.name === "Google UK English Male";})[0];
+        console.log(speaker.voice)
+        speechSynthesis.speak(speaker);
       });
   }
 
@@ -202,7 +216,7 @@ class Timer extends Component {
 
   render() {
     return (
-      <div className="main">
+      <div className="app">
         <Jumbotron className="timerJumbotron">
           <div clasname="timer">
             <h2 className="title">Praise the All-Anus!!</h2>
