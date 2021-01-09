@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Jumbotron, Form, Button, Row, Col } from "react-bootstrap";
 
 class Timer extends Component {
+
+  componentDidMount() {
+    this.handleForceUpdateVoices();
+  }
   
   constructor(props) {
     super(props);
@@ -75,6 +79,7 @@ class Timer extends Component {
       minutes: 0,
       inputSeconds: 0,
       inputMinutes: 0,
+      voice: null,
     };
   }
 
@@ -185,7 +190,7 @@ class Timer extends Component {
   alert = (phrases) => {
       phrases.forEach(phrase => {
         let speaker = new SpeechSynthesisUtterance(phrase);
-        speaker.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name === "Google UK English Male";})[0];
+        speaker.voice = this.state.voice;
         speechSynthesis.speak(speaker);
       });
   }
@@ -210,6 +215,19 @@ class Timer extends Component {
     return Math.floor(Math.random() * (max));
   }
 
+  handleForceUpdateVoices = () => {
+      console.log("Force updating voices...");
+      let voiceResult = speechSynthesis.getVoices().filter(function(voice) { return voice.name === "Google UK English Male";});
+      if (voiceResult.length > 0) {
+        this.state.voice = voiceResult[0];
+        
+      } else {
+        this.state.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name === "English (Great Britain)";})[0];
+      }
+      console.log(speechSynthesis.getVoices());
+      console.log(this.state.voice);
+  }
+
   render() {
     return (
       <div className="app">
@@ -230,9 +248,16 @@ class Timer extends Component {
               <Col>
                 <Form.Control placeholder="Seconds" type="text" onChange={this.handleSecondsChange}></Form.Control>
               </Col>
+              <Col>
               <Button type="submit">Set Timer</Button>
+              </Col>
+              <Col>
+              <Button onClick={this.handleForceUpdateVoices}>Update Voices</Button>
+              </Col>
+
             </Row>
           </Form>
+
           </div>
         </Jumbotron>
       </div>
