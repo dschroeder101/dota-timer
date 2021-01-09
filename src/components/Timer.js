@@ -20,8 +20,10 @@ class Timer extends Component {
       "Try to hit 100 creep score this game, you casual",
       "Nic, don't forget to hit the nexus",
       "Let me guess, Quin is playing Windranger",
-      "Uh oh, Christian is playing a broken hero",
-      "Alex in ten minutes: Oh no, they're killing me, oh no, I'm dead"
+      "Oh no, Christian is playing a broken hero",
+      "Alex in ten minutes: Oh no, they're killing me, oh no, I'm dead",
+      "Put on your 3 D glasses now",
+      "Time to serve up the hot dickings"
     ]
 
     this.bountiesIn30SecondsPhrases = [
