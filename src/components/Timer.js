@@ -17,17 +17,20 @@ class Timer extends Component {
       "May the all anus be with you",
       "Godspeed, the all anus smiles upon you this day",
       "Do not get peenisy, kid",
-      "Give them a good rogering",
       "Your team comp is horrible, you'll probably lose",
       "I hope you're not tilted after that last game",
-      "I long for death, but death will not come",
       "Try to hit 100 creep score this game, you casual",
       "Nic, don't forget to hit the nexus",
       "Let me guess, Quin is playing Windranger",
       "Oh no, Christian is playing a broken hero",
       "Alex in ten minutes: Oh no, they're killing me, oh no, I'm dead",
       "Put on your 3 D glasses now",
-      "Time to serve up the hot dickings"
+      "Time to serve up the hot dickings",
+      "No Alex, those are not bots. Those are your teammates",
+      "It's all the random's fault",
+      "Dota is a fair and balanced game",
+      "You would probably play better if you were drunk",
+      "Don't forget to use your active items, you scrub"
     ]
 
     this.bountiesIn30SecondsPhrases = [
